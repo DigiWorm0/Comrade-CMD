@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { _useBTComms } from './hooks/useBluetooth';
+import { _useGamepads } from './hooks/useGamepads';
+import MainPanel from './panels/MainPanel';
+import SidePanel from './panels/SidePanel';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    _useGamepads();
+    _useBTComms();
+
+    return (
+        <div
+            className="bp4-dark"
+            style={{
+                display: 'flex',
+                flexDirection: 'row',
+
+                height: '100vh',
+                width: '100vw',
+            }}>
+
+            <SidePanel />
+            <MainPanel />
+
+        </div>
+    );
 }
 
 export default App;
