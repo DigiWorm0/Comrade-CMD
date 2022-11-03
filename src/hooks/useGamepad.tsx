@@ -7,7 +7,7 @@ export const currentGamepadAtom = atom(
         const gamepads = get(gamepadsAtom);
         const activeGamepadID = get(currentGamepadIDAtom);
         return gamepads.find((gamepad) => gamepad.id === activeGamepadID);
-    }, (get, set, id: string | undefined) => {
+    }, (_, set, id: string | undefined) => {
         set(currentGamepadIDAtom, id);
     }
 );

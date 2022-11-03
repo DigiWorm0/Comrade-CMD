@@ -2,7 +2,7 @@ import React from 'react';
 import GamepadState from '../types/GamepadState';
 import { useCurrentGamepadID } from './useGamepad';
 
-const GAMEPAD_POLL_RATE = 1000 / 20; // 10 FPS
+const GAMEPAD_POLL_RATE = 1000 / 20; // 20 FPS
 
 export default function useGamepadState() {
     const [activeGamepadID] = useCurrentGamepadID();
