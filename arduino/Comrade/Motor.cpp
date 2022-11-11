@@ -8,7 +8,9 @@ Motor::Motor(byte pin, int idleValue, int maxValue) {
 }
 
 void Motor::set(double value) {
-  double val = constrain(value, -1, 1);
+  double val = constrain(value, -1, 1) * (1 - _limitVal) + _trimVal;
+  if (abs(val) < _deadbandVal)
+    val = 0;
   if (val == _currentVal)
     return;
   _currentVal = val;
@@ -24,4 +26,16 @@ void Motor::setName(String name)
 
 void Motor::setRaw(int value) {
   _motor.write(value);
+}
+
+void Motor::setDeadband(double deadband) {
+  _deadbandVal = deadband;
+}
+
+void Motor::setLimit(double limit) {
+  _limitVal = limit;
+}
+
+void Motor::setTrim(double trim) {
+  _trimVal = trim;
 }

@@ -10,6 +10,9 @@ class Motor {
     int _range = 0;
     int _offset = 0;
     double _currentVal = 0;
+    double _deadbandVal = 0;
+    double _limitVal = 0;
+    double _trimVal = 0;
 
   public:
     /**
@@ -37,6 +40,24 @@ class Motor {
       @param name - Display name to log the motor as
     */
     void setName(String name);
+
+    /**
+      Sets the motor's deadband range
+      @param deadband - Value from 0 - 1
+    */
+    void setDeadband(double deadband);
+
+    /**
+      Sets the motor's limit value
+      @param limit - Value from 0 - 1
+    */
+    void setLimit(double limit);
+
+    /**
+      Sets the motor's trim value
+      @param trim - Value from 0 - 1
+    */
+    void setTrim(double trim);
 };
 
 #endif
